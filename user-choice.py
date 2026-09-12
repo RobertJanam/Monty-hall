@@ -62,6 +62,9 @@ def main():
                 
                 print(f"You won! The prize was in door {door}.")
                 print("You switched and you WON.")
+
+        else:
+            print("Pick between y or n.")
         
     except ValueError:
         print("Pick a number.")
