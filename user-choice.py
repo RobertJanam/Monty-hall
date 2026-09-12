@@ -16,14 +16,16 @@ def main():
     while True:
         try:
             pick_door = int(input("Pick a door (1, 2, 3): "))
+            str_pick_door = str(pick_door)
+            
             if not (1 <= pick_door <= 3):
                 print("Pick a number between 1 and 3.")
                 continue
             
-            if str(pick_door) == prize_door:
+            if str_pick_door == prize_door:
                 temp_doors = []
                 for door in doors:
-                    if door != str(pick_door):
+                    if door != str_pick_door:
                         temp_doors.append(door)
                 
                 random_empty_door = random.choice(temp_doors)
@@ -45,7 +47,7 @@ def main():
             
             else:
                 for door in doors:
-                    if door != prize_door and door != str(pick_door):
+                    if door != prize_door and door != str_pick_door:
                         print(f"Door {door} is opened and is empty.")
                         break
                 while True:
