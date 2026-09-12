@@ -25,10 +25,7 @@ def main():
             print("Pick a number.")
             
     if str_pick_door == prize_door:
-        temp_doors = []
-        for door in doors:
-            if door != str_pick_door:
-                temp_doors.append(door)
+        temp_doors = [door for door in doors if door != str_pick_door]
         
         random_empty_door = random.choice(temp_doors)
         
