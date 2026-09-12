@@ -17,6 +17,7 @@ def main():
         
         if not (1 <= pick_door <= 3):
             print("Pick a number between 1 and 3.")
+            return
             
         for door in prior_doors:
             if str(pick_door) == door:
@@ -34,37 +35,38 @@ def main():
             final_doors.append(door)
         
         random_prize_door = random.choice(final_doors)
-        choice_to_switch = input("Do you wish to switch doors? (y/n): ").lower()
-        
-        if choice_to_switch == 'n':
-            if random_prize_door == str(pick_door):
-                print(f"You won! The prize was in door {pick_door}.")
-                print("You didn't switch and you WON.")
+        while True:
+            choice_to_switch = input("Do you wish to switch doors? (y/n): ").lower().strip()
+            
+            if choice_to_switch == 'n':
+                if random_prize_door == str(pick_door):
+                    print(f"You won! The prize was in door {pick_door}.")
+                    print("You didn't switch and you WON.")
+                else:
+                    for door in final_doors:
+                        if pick_door == door:
+                            final_doors.remove(door)
+                            print(final_doors)
+                            break
+                    
+                    print(f"Sorry, the prize was in door {door}.")
+                    print("You didn't switch and you LOST.")
+                break
+            elif choice_to_switch == 'y':
+                if random_prize_door == str(pick_door):
+                    print(f"Sorry, the prize was in door {pick_door}.")
+                    print("You switched and you LOST.")
+                else:
+                    for door in final_doors:
+                        if random_prize_door == door:
+                            final_doors.remove(random_prize_door) 
+                            break
+                    
+                    print(f"You won! The prize was in door {door}.")
+                    print("You switched and you WON.")
+                break
             else:
-                for door in final_doors:
-                    if pick_door == door:
-                        final_doors.remove(door)
-                        print(final_doors)
-                        break
-                
-                print(f"Sorry, the prize was in door {door}.")
-                print("You didn't switch and you LOST.")
-
-        elif choice_to_switch == 'y':
-            if random_prize_door == str(pick_door):
-                print(f"Sorry, the prize was in door {pick_door}.")
-                print("You switched and you LOST.")
-            else:
-                for door in final_doors:
-                    if random_prize_door == door:
-                        final_doors.remove(random_prize_door) 
-                        break
-                
-                print(f"You won! The prize was in door {door}.")
-                print("You switched and you WON.")
-
-        else:
-            print("Pick between y or n.")
+                print("Pick between y or n.")
         
     except ValueError:
         print("Pick a number.")
