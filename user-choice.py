@@ -26,42 +26,35 @@ def main():
             
     if str_pick_door == prize_door:
         temp_doors = [door for door in doors if door != str_pick_door]
-        
         random_empty_door = random.choice(temp_doors)
-        
-        print(f"Door {random_empty_door} is opened and is empty.")
-        while True:
-            choice_to_switch = input("Do you wish to switch doors? (y/n): ").lower()
-            
-            if choice_to_switch == 'n':
-                print(f"You won! The prize was in door {prize_door}.")
-                print("You didn't switch and you WON.")
-                break
-            elif choice_to_switch == 'y':
-                print(f"Sorry, the prize was in door {prize_door}.")
-                print("You switched and you LOST.")
-                break
-            else:
-                print("Pick between y or n.")
-    
     else:
         for door in doors:
             if door != prize_door and door != str_pick_door:
-                print(f"Door {door} is opened and is empty.")
+                random_empty_door = door
                 break
-        while True:
-            choice_to_switch = input("Do you wish to switch doors? (y/n): ").lower()
-            
-            if choice_to_switch == 'n':
-                print(f"Sorry, the prize was in door {prize_door}.")
-                print("You didn't switch and you LOST.")
-                break
-            elif choice_to_switch == 'y':
-                print(f"You won! The prize was in door {prize_door}.")
-                print("You switched and you WON.")
-                break
-            else:
-                print("Pick between y or n.")
+                
+    print(f"Door {random_empty_door} is opened and is empty.")
+    
+    while True:
+        choice_to_switch = input("Do you wish to switch doors? (y/n): ").lower().strip()
+        if choice_to_switch in ['y', 'n']:
+            break
+        print("Pick between y or n.")
+
+    if str_pick_door == prize_door:
+        if choice_to_switch == 'n':
+            print(f"You won! The prize was in door {prize_door}."
+                "\nYou didn't switch and you WON.")
+        else:
+            print(f"Sorry, the prize was in door {prize_door}."
+                "\nYou switched and you LOST.")
+    else:
+        if choice_to_switch == 'n':
+            print(f"Sorry, the prize was in door {prize_door}."
+                "\nYou didn't switch and you LOST.")
+        else:
+            print(f"You won! The prize was in door {prize_door}."
+                "\nYou switched and you WON.")
     
 if __name__ == "__main__":
     main()
