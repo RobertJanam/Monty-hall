@@ -6,8 +6,8 @@ In the game, a contestant is presented with three doors. Behind one door is a pr
 
 Mathematically, switching doors doubles the player's chances of winning from 1/3 to 2/3.
 
-https://github.com/user-attachments/assets/f8794a2e-5d6b-4891-8b6b-53d4c03345c5
+![Asset Preview](assets/demo1.gif)
 
-https://github.com/user-attachments/assets/722f1d29-642d-4637-83f7-b4494373158d
+![Asset Preview](assets/demo2.gif)
 
 ![Monty Hall Game Screenshot](images/results.png)
